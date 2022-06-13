@@ -25,7 +25,7 @@ namespace BookStoreApi.Controllers
 
                 ListResponse<PublisherModel> listResponse = new ListResponse<PublisherModel>()
                 {
-                    Results = publishers.Results.Select(x => new PublisherModel(x)).ToList(),
+                    Records = publishers.Records.Select(x => new PublisherModel(x)).ToList(),
                     TotalRecords = publishers.TotalRecords
                 };
                 return StatusCode(HttpStatusCode.OK.GetHashCode(), listResponse);

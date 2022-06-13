@@ -9,8 +9,6 @@ namespace BookStoreRepository
 {
     public class UserRepository : BaseRepository
     {
-        
-
         public User Login(LoginModel model)
         {
             return _context.Users.FirstOrDefault(c => c.Email.Equals(model.Email.ToLower()) && c.Password.Equals(model.Password));
@@ -52,7 +50,6 @@ namespace BookStoreRepository
         {
             if (id > 0)
             {
-
                 return _context.Users.Where(u => u.Id == id).FirstOrDefault();
             }
 
@@ -79,5 +76,18 @@ namespace BookStoreRepository
             }
             return false;
         }
+
+        public ListResponse<Role> GetRoles()
+        {
+            var query = _context.Roles;
+            int totalRecords = query.Count();
+            List<Role> roles = query.ToList();
+            return new ListResponse<Role>()
+            {
+                Records = roles,
+                TotalRecords = totalRecords,
+            };
+        }
     }
 }
+ 

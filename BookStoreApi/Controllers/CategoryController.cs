@@ -25,7 +25,7 @@ namespace BookStoreApi.Controllers
 
                 ListResponse<CategoryModel> listResponse = new ListResponse<CategoryModel>()
                 {
-                    Results = categories.Results.Select(x => new CategoryModel(x)).ToList(),
+                    Records = categories.Records.Select(x => new CategoryModel(x)).ToList(),
                     TotalRecords = categories.TotalRecords
                 };
                 return StatusCode(HttpStatusCode.OK.GetHashCode(), listResponse);

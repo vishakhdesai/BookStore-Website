@@ -98,5 +98,25 @@ namespace BookStoreApi.Controllers
                 return StatusCode(HttpStatusCode.InternalServerError.GetHashCode(), ex.Message);
             }
         }
+
+        [HttpGet]
+        [Route("roles")]
+        public IActionResult GetRoles()
+        {
+            try
+            {
+                var roles = _repository.GetRoles();
+                ListResponse<RoleModel> RoleList = new ListResponse<RoleModel>()
+                {
+                    Records = roles.Records.Select(x => new RoleModel(x)).ToList(),
+                    TotalRecords = roles.TotalRecords
+                };
+                return StatusCode(HttpStatusCode.OK.GetHashCode(), roles); ;
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(HttpStatusCode.InternalServerError.GetHashCode(), ex.Message);
+            }
+        }
     }
 }

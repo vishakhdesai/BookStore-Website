@@ -22,7 +22,7 @@ namespace BookStoreRepository
 
             return new ListResponse<Book>()
             {
-                Results = books,
+                Records = books,
                 TotalRecords = totalRecords
             };
 
