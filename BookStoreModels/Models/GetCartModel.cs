@@ -31,8 +31,8 @@ namespace BookStoreModels.Models
                 Id = cart.Book.Id,
                 Name = cart.Book.Name,
                 Description = cart.Book.Description,
-                Categoryid = cart.Book.Categoryid,
-                Publisherid = cart.Book.Publisherid,
+                CategoryId = cart.Book.Categoryid,
+                PublisherId = cart.Book.Publisherid,
                 Price = cart.Book.Price,
             };
         }

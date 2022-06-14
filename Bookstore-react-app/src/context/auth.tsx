@@ -71,6 +71,7 @@ export const AuthWrapper: React.FC<React.PropsWithChildren<{}>> = ({
 		if (!user.id) {
 			return;
 		}
+		// console.log(user);
 		const access: boolean = Shared.hasAccess(pathname, user);
 		if (!access) {
 			toast.warning("Sorry, you are not authorized to access this page");

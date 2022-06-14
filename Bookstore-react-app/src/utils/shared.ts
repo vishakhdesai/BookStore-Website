@@ -45,6 +45,7 @@ export default class Shared {
 			pathname.includes(navItem.route)
 		);
 		if (navItem) {
+			// console.log("role id:",user.roleId);
 			return (
 				!navItem.access ||
 				!!(navItem.access && navItem.access.includes(user.roleId))

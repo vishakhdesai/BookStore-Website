@@ -22,6 +22,6 @@ export default class UserModel {
 	firstName!: string;
 	lastName!: string;
 	roleId!: number;
-	role?: string;
+	// role?: string;
 	password?: string;
 }

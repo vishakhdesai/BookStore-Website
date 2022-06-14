@@ -14,7 +14,7 @@ namespace BookStoreApi.Controllers
 
         [Route("list")]
         [HttpGet]
-        public IActionResult GetCategories(string? keyword, int pageIndex = 1, int pageSize = 10)
+        public IActionResult GetCategories(string? keyword, int pageIndex = 0, int pageSize = 10)
         {
         
             try 

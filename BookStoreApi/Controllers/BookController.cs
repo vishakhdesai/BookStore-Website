@@ -66,8 +66,8 @@ namespace BookStoreApi.Controllers
                     Price = bookModel.Price,
                     Description = bookModel.Description,
                     Base64image = bookModel.Base64image,
-                    Categoryid = bookModel.Categoryid,
-                    Publisherid = bookModel.Publisherid,
+                    Categoryid = bookModel.CategoryId,
+                    Publisherid = bookModel.PublisherId,
                     Quantity = bookModel.Quantity,
                 };
                 var addedBook = _bookRepository.AddBook(book);
@@ -98,8 +98,8 @@ namespace BookStoreApi.Controllers
                         Price = bookModel.Price,
                         Description = bookModel.Description,
                         Base64image = bookModel.Base64image,
-                        Categoryid = bookModel.Categoryid,
-                        Publisherid = bookModel.Publisherid,
+                        Categoryid = bookModel.CategoryId,
+                        Publisherid = bookModel.PublisherId,
                         Quantity = bookModel.Quantity,
                     };
                     var response = _bookRepository.UpdateBook(book);

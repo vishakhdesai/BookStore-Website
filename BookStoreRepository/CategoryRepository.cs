@@ -18,7 +18,7 @@ namespace BookStoreRepository
 
             int totalRecords = query.Count();
 
-            List<Category> categories = query.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToList();
+            List<Category> categories = query.Skip((pageIndex) * pageSize).Take(pageSize).ToList();
 
             return new ListResponse<Category>()
             {

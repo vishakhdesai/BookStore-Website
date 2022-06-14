@@ -14,10 +14,11 @@ namespace BookStoreModels.Models
         public decimal Price { get; set; }
         public string? Description { get; set; }
         public string? Base64image { get; set; }
-        public int Categoryid { get; set; }
-        public int? Publisherid { get; set; }
+        public int CategoryId { get; set; }
+        public int? PublisherId { get; set; }
         public int? Quantity { get; set; }
 
+        public string? Category { get; set; }
         public BookModel() { }
         public BookModel(Book book)
         {
@@ -26,9 +27,10 @@ namespace BookStoreModels.Models
             this.Price = book.Price;
             this.Description = book.Description;
             this.Base64image = book.Base64image;
-            this.Categoryid = book.Categoryid;
-            this.Publisherid = book.Publisherid;
+            this.CategoryId = book.Categoryid;
+            this.PublisherId = book.Publisherid;
             this.Quantity = book.Quantity;
+            this.Category = " ";
         }
     }
 }

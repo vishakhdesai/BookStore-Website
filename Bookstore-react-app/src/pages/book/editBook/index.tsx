@@ -71,6 +71,7 @@ const EditBook: React.FC = () => {
 	};
 
 	const onSubmit = (values: BookModel): void => {
+		// console.log(values);
 		bookService
 			.save(values)
 			.then((res) => {
