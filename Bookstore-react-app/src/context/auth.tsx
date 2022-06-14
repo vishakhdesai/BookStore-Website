@@ -33,6 +33,8 @@ export const AuthWrapper: React.FC<React.PropsWithChildren<{}>> = ({
 
 	const setUser = (user: UserModel): void => {
 		localStorage.setItem(Shared.LocalStorageKeys.USER, JSON.stringify(user));
+		console.log(user);
+		console.log(localStorage.getItem(Shared.LocalStorageKeys.USER) as String);
 		_setUser(user);
 	};
 

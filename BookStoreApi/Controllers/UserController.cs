@@ -19,6 +19,7 @@ namespace BookStoreApi.Controllers
             try
             {
                 var users = _repository.GetUsers(pageIndex, pageSize, keyword);
+                
                 if(users == null)
                     return StatusCode(HttpStatusCode.NotFound.GetHashCode(), "Please provide correct information");
                 return StatusCode(HttpStatusCode.OK.GetHashCode(), users);

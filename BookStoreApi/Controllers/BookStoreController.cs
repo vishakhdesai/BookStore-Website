@@ -19,10 +19,11 @@ namespace BookStoreApi.Controllers
             try
             {
                 User user = _repository.Login(model);
+                UserModel userModel = new UserModel(user);
                 if (user == null)
                     return StatusCode(HttpStatusCode.NotFound.GetHashCode(), "User Not Found"); ;
                 //return Ok(user);
-                return StatusCode(HttpStatusCode.OK.GetHashCode(),user);
+                return StatusCode(HttpStatusCode.OK.GetHashCode(),userModel);
             }
             catch (Exception ex)
             {

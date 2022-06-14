@@ -35,6 +35,7 @@ const Login: React.FC = () => {
 
 	const onSubmit = (values: LoginModel): void => {
 		authService.login(values).then((res) => {
+			// console.log(res);
 			authContext.setUser(res);
 			history.push("/");
 			toast.success("Successfully logged in");

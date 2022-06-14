@@ -8,7 +8,7 @@ class AuthService {
     public async login(data: LoginModel): Promise<UserModel> {
         const url = `${this.ENDPOINT}/login`;
         return request.post(url, data).then((res) => {
-            return res.data.data as UserModel;
+            return res.data as UserModel;
         });
     }
 

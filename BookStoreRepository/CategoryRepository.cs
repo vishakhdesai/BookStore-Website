@@ -25,7 +25,6 @@ namespace BookStoreRepository
                 Records = categories,
                 TotalRecords = totalRecords
             };
-
         }
 
         public Category GetCategory(int id)

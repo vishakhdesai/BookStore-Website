@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BookStoreModels.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,19 @@ namespace BookStoreModels.Models
         public string Lastname { get; set; } = null!;
         public string Email { get; set; } = null!;
         public string Password { get; set; } = null!;
+
+        public virtual Role Role { get; set; } = null!;
         public int Roleid { get; set; }
+
+        public UserModel(User user)
+        {
+            Id = user.Id;
+            Firstname = user.Firstname;
+            Lastname = user.Lastname;
+            Email = user.Email;
+            Password = user.Password;
+            Roleid = user.Roleid;
+            Role = user.Role;
+        }
     }
 }

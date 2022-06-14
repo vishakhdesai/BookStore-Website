@@ -65,7 +65,7 @@ const BookList: React.FC = () => {
 	};
 
 	const getAllCategories = async (): Promise<void> => {
-		await categoryService.getAll({ pageIndex: 0 }).then((res) => {
+		await categoryService.getAll({ pageIndex: 1 ,}).then((res) => {
 			if (res) {
 				setCategories(res.records);
 			}

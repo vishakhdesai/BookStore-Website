@@ -4,7 +4,7 @@ import BaseList from "../models/BaseList";
 import { CategoryModel } from "../models/CategoryModel";
 
 class CategoryService {
-    ENDPOINT = 'api/Category';
+    ENDPOINT = 'api/category';
 
     public async getAll(params: FilterModel): Promise<BaseList<CategoryModel[]>> {
         const url = `${this.ENDPOINT}/list`;
@@ -21,7 +21,7 @@ class CategoryService {
     }
 
     public async delete(id: number): Promise<CategoryModel> {
-        const url = `${this.ENDPOINT}/Delete/${id}`;
+        const url = `${this.ENDPOINT}/delete/${id}`;
         return request.delete<CategoryModel>(url).then((res) => {
             return res.data;
         });
@@ -29,12 +29,12 @@ class CategoryService {
 
     public async save(data: CategoryModel): Promise<CategoryModel> {
         if (data.id) {
-            const url = `${this.ENDPOINT}/Update`;
+            const url = `${this.ENDPOINT}/update`;
             return request.put<CategoryModel>(url, data ).then((res) => {
                 return res.data;
             });
         } else {
-            const url = `${this.ENDPOINT}/Add`;
+            const url = `${this.ENDPOINT}/add`;
             return request.post<CategoryModel>(url, data ).then((res) => {
                 return res.data;
             });
