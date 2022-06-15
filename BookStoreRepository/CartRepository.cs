@@ -16,6 +16,11 @@ namespace BookStoreRepository
             int totalRecords = query.Count();
             List<Cart> cart = query.ToList();
 
+            foreach (Cart cartItem in cart)
+            {
+                cartItem.Book = _context.Books.FirstOrDefault(c => c.Id == cartItem.Bookid);
+            }
+
             return new ListResponse<Cart>()
             {
                 Records = cart,
@@ -36,14 +41,14 @@ namespace BookStoreRepository
             return entry.Entity;
         }
 
-        public bool DeleteItem(int id)
+        public Cart DeleteItem(int id)
         {
             var cartItem = _context.Carts.SingleOrDefault(c => c.Id == id);
             if (cartItem == null)
-                return false;
+                return null;
             var entry = _context.Carts.Remove(cartItem);
             _context.SaveChanges();
-            return true;
+            return entry.Entity;
         }
     }
 }

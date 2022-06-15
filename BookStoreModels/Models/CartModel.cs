@@ -10,8 +10,8 @@ namespace BookStoreModels.Models
     public class CartModel
     {
         public int Id { get; set; }
-        public int Userid { get; set; }
-        public int Bookid { get; set; }
+        public int UserId { get; set; }
+        public int BookId { get; set; }
         public int Quantity { get; set; }
 
 
@@ -20,8 +20,8 @@ namespace BookStoreModels.Models
         public CartModel(Cart cart)
         {
             Id = cart.Id;
-            Userid = cart.Userid;
-            Bookid = cart.Bookid;
+            UserId = cart.Userid;
+            BookId = cart.Bookid;
             Quantity = cart.Quantity;
         }
     }

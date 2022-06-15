@@ -10,19 +10,19 @@ namespace BookStoreModels.Models
     public class GetCartModel
     {
         public int Id { get; set; }
-        public int Userid { get; set; }
-        public int Bookid { get; set; }
+        public int UserId { get; set; }
+        public int BookId { get; set; }
         public int Quantity { get; set; }
 
-        public virtual BookModel Book { get; set; } = null!;
+        public BookModel Book { get; set; }
 
         public GetCartModel() { }
 
         public GetCartModel(Cart cart)
         {
             Id = cart.Id;
-            Userid = cart.Userid;
-            Bookid = cart.Bookid;
+            UserId = cart.Userid;
+            BookId = cart.Bookid;
             Quantity = cart.Quantity;
             Book = new BookModel()
             {

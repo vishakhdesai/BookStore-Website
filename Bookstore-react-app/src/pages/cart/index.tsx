@@ -39,6 +39,7 @@ const Cart: React.FC = () => {
 
 	const removeItem = async (id: number) => {
 		try {
+			console.log(id);
 			const res = await cartService.removeItem(id);
 			if (res) {
 				cartContext.updateCart();

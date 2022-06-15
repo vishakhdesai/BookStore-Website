@@ -19,14 +19,14 @@ namespace BookStoreApi.Controllers
 
             try
             {
-                var categories = _cartRepository.GetCart(UserId);
-                if (categories == null)
+                var cart = _cartRepository.GetCart(UserId);
+                if (cart == null)
                     return StatusCode(HttpStatusCode.NotFound.GetHashCode(), "Please provide correct information");
 
-                ListResponse<CartModel> listResponse = new ListResponse<CartModel>()
+                ListResponse<GetCartModel> listResponse = new ListResponse<GetCartModel>()
                 {
-                    Records = categories.Records.Select(x => new CartModel(x)).ToList(),
-                    TotalRecords = categories.TotalRecords
+                    Records = cart.Records.Select(x => new GetCartModel(x)).ToList(),
+                    TotalRecords = cart.TotalRecords
                 };
                 return StatusCode(HttpStatusCode.OK.GetHashCode(), listResponse);
             }
@@ -46,8 +46,8 @@ namespace BookStoreApi.Controllers
                 Cart cart = new Cart()
                 {
                     Id = cartModel.Id,
-                    Userid = cartModel.Userid,
-                    Bookid = cartModel.Bookid,
+                    Userid = cartModel.UserId,
+                    Bookid = cartModel.BookId,
                     Quantity = cartModel.Quantity,
                 };
                 var addedCategory = _cartRepository.AddItem(cart);
@@ -65,7 +65,7 @@ namespace BookStoreApi.Controllers
 
         [Route("update")]
         [HttpPut]
-        public IActionResult UpdateCategory(CartModel cartModel)
+        public IActionResult UpdateCartItem(CartModel cartModel)
         {
             try
             {
@@ -74,8 +74,8 @@ namespace BookStoreApi.Controllers
                     Cart cart = new Cart()
                     {
                         Id = cartModel.Id,
-                        Userid = cartModel.Userid,
-                        Bookid = cartModel.Bookid,
+                        Userid = cartModel.UserId,
+                        Bookid = cartModel.BookId,
                         Quantity = cartModel.Quantity,
                     };
                     var response = _cartRepository.UpdateItem(cart);
@@ -93,16 +93,16 @@ namespace BookStoreApi.Controllers
 
         [Route("delete/{id}")]
         [HttpDelete]
-        public IActionResult DeleteCategory(int id)
+        public IActionResult DeleteCart(int id)
         {
             if (id == 0)
                 return StatusCode(HttpStatusCode.BadRequest.GetHashCode(), "id is null");
             try
             {
-                bool response = _cartRepository.DeleteItem(id);
-                if (response == true)
+                Cart response = _cartRepository.DeleteItem(id);
+                if (response != null)
                     return StatusCode(HttpStatusCode.OK.GetHashCode(), "Cart Deleted Successfully");
-                return StatusCode(HttpStatusCode.BadRequest.GetHashCode(), "Please provide correct information");
+                return StatusCode(HttpStatusCode.BadRequest.GetHashCode(), new CartModel(response));
             }
             catch (Exception ex)
             {

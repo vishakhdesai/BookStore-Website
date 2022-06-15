@@ -24,10 +24,12 @@ class CartService {
  }
 
  public async updateItem(data: CartModel): Promise<CartModel> {
-    const url = `${this.ENDPOINT}/Update`;
+    const url = `${this.ENDPOINT}/update`;
+    // console.log(data);
     return request
      .put<CartModel>(url, data)
      .then((res) => {
+      
       return res.data;
      })
      .catch((e) => {
@@ -36,7 +38,8 @@ class CartService {
    }
 
  public async removeItem(id: number): Promise<CartModel> {
-  const url = `${this.ENDPOINT}?id=${id}`;
+  const url = `${this.ENDPOINT}/delete/${id}`;
+  // console.log(url);
   return request
    .delete<CartModel>(url)
    .then((res) => {
